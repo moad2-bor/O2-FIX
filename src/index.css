@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  background-color: #030a1c;
+  color: #f8fafc;
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body[dir="rtl"] {
+  font-family: 'Cairo', 'Outfit', sans-serif;
+}
+
+/* Custom UI Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #030a1c;
+}
+::-webkit-scrollbar-thumb {
+  background: #0f172a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1e293b;
+}
+
+/* Modern Glass & Depth Utilities */
+.glass {
+  background: rgba(10, 18, 40, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card {
+  background: linear-gradient(180deg, rgba(20, 32, 58, 0.4) 0%, rgba(10, 15, 30, 0.6) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.accent-gradient {
+  background: linear-gradient(135deg, #14b8a6 0%, #0284c7 100%);
+}
+
+.text-glow {
+  text-shadow: 0 0 25px rgba(20, 184, 166, 0.5);
+}
+
+/* Base Grid Pattern */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+}
