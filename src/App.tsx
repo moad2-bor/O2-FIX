@@ -208,8 +208,8 @@ const fadeUpItem = {
 };
 
 export default function App() {
-  const [lang, setLang] = useState<'en' | 'ar'>('en');
-  const t = translations[lang];
+  const lang = 'ar';
+  const t = translations['ar'];
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -239,10 +239,6 @@ export default function App() {
     }
   };
 
-  const toggleLanguage = () => {
-    setLang(prev => prev === 'en' ? 'ar' : 'en');
-  };
-
   const handleBookSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setBookingStatus('submitting');
@@ -257,10 +253,10 @@ export default function App() {
   };
 
   return (
-    <div dir={lang === 'ar' ? 'rtl' : 'ltr'} className="min-h-screen selection:bg-teal-500 selection:text-white flex flex-col relative w-full overflow-x-hidden">
+    <div dir="rtl" className="min-h-screen selection:bg-teal-500 selection:text-white flex flex-col relative w-full overflow-x-hidden">
       {/* Scroll Progress */}
       <motion.div
-        style={{ scaleX, transformOrigin: lang === 'ar' ? 'right' : 'left' }}
+        style={{ scaleX, transformOrigin: 'right' }}
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 to-sky-500 z-[100]"
       />
 
@@ -313,10 +309,6 @@ export default function App() {
               ))}
               
               <div className="w-px h-6 bg-slate-700/50"></div>
-              
-              <button onClick={toggleLanguage} className="text-xs font-bold uppercase tracking-widest text-teal-400 hover:text-teal-300 transition-colors flex items-center gap-1">
-                {t.nav.lang}
-              </button>
 
               <button 
                 onClick={() => setIsBookingModalOpen(true)}
@@ -326,11 +318,8 @@ export default function App() {
               </button>
             </div>
 
-            {/* Mobile Menu Button & Lang Toggle */}
+            {/* Mobile Menu Button */}
             <div className="flex md:hidden items-center gap-4">
-              <button onClick={toggleLanguage} className="text-xs font-bold uppercase tracking-widest text-teal-400 hover:text-teal-300 transition-colors">
-                 {t.nav.lang}
-              </button>
               <button 
                 className="p-2 text-slate-400 hover:text-white transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -399,7 +388,7 @@ export default function App() {
                   className="relative group overflow-hidden accent-gradient text-white px-8 py-4 lg:py-5 rounded-xl font-bold tracking-widest uppercase transition-all shadow-xl shadow-teal-500/20 hover:shadow-teal-500/40 active:scale-95 flex items-center justify-center gap-3"
                 >
                   <span className="relative z-10">{t.hero.bookBtn}</span>
-                  {lang === 'ar' ? <ChevronLeft className="w-5 h-5 relative z-10 group-hover:-translate-x-1 transition-transform" /> : <ChevronRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />}
+                  <ChevronLeft className="w-5 h-5 relative z-10 group-hover:-translate-x-1 transition-transform" />
                   <div className="absolute inset-0 h-full w-full bg-white/20 scale-x-0 group-hover:scale-x-100 ltr:origin-left rtl:origin-right transition-transform duration-500 ease-out z-0"></div>
                 </button>
                 <div 
@@ -474,7 +463,7 @@ export default function App() {
             </div>
             <button className="hidden lg:flex items-center gap-2 text-sm uppercase tracking-widest font-semibold text-slate-400 hover:text-teal-400 transition-colors group" onClick={() => setIsBookingModalOpen(true)}>
               {t.nav.book} 
-              {lang === 'ar' ? <ArrowRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" /> : <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
+              <ArrowRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
             </button>
           </div>
           
@@ -504,7 +493,7 @@ export default function App() {
                     <p className="text-slate-400 text-sm leading-relaxed">{s.desc}</p>
                   </div>
                   <div className="mt-4 pt-4 border-t border-slate-800/50 flex items-center text-xs uppercase tracking-widest text-teal-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-                    {lang === 'ar' ? 'اعرف المزيد ←' : 'Learn More →'}
+                    'اعرف المزيد ←'
                   </div>
                 </motion.div>
               );
@@ -522,7 +511,7 @@ export default function App() {
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             
             <motion.div 
-              initial={{ opacity: 0, x: lang === 'ar' ? 50 : -50 }}
+              initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -582,7 +571,7 @@ export default function App() {
                   className="rounded-[1.5rem] w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-70"
                   referrerPolicy="no-referrer"
                 />
-                <div className={`absolute inset-0 pointer-events-none ${lang === 'ar' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-[#020617]/80 via-transparent to-transparent`} />
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-l from-[#020617]/80 via-transparent to-transparent" />
               </div>
             </motion.div>
 
@@ -825,7 +814,7 @@ export default function App() {
                           ))}
                         </select>
                         <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
-                          <ChevronLeft className={`w-4 h-4 ${lang === 'ar' ? 'rotate-90 right-auto left-4' : '-rotate-90'}`} />
+                          <ChevronLeft className="w-4 h-4 rotate-90 right-auto left-4" />
                         </div>
                       </div>
                     </div>
