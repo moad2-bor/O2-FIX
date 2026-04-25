@@ -290,7 +290,7 @@ export default function App() {
                 className="h-10 w-auto object-contain group-hover:scale-105 transition-transform"
                 referrerPolicy="no-referrer"
               />
-              <h1 className="text-2xl font-bold tracking-tight text-glow uppercase hidden sm:block">
+              <h1 className="text-2xl font-bold tracking-tight text-glow uppercase">
                 O2 <span className="text-teal-400">FIX</span>
               </h1>
             </div>
